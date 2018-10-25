@@ -209,7 +209,7 @@ int Form::getH()
 {
     return h;
 }
-int Form::getnbForm()
+int  Form::getnbForm()
 {
     return nbForm;
 }
