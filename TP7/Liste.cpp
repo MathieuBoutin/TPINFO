@@ -56,62 +56,106 @@ Liste::~Liste()
         first = c->suiv;
         delete c;
     }
-    delete last;
+    
     
 }
 
 bool Liste::empty()
 {
-    return (last==first);
+    return (first->suiv == NULL);
 }
 
-void Liste::insert(int x)
+void Liste::push_back(int x)
 {
-    if(first!=NULL)
+    if(first->suiv!=NULL)
     {
-        last->donnee = x;
         last->suiv = new Cellule();
-        last = last->suiv ;
+        last->suiv->donnee = x;
+        cout << last->suiv->donnee << endl;
+        last->suiv = last->suiv->suiv ;
     }
     else
     {
-        first->suiv = new Cellule();
-        
-        first->suiv->donnee = x;
-        first->suiv->suiv = new Cellule();
-        last = first->suiv->suiv;
+        first->suiv = new Cellule(x);
+        last->suiv = first->suiv->suiv;
     }
 }
 
-void Liste::insertTete(int x)
+void Liste::push_front(int x)
 {
-    if(first!=last)
+    if(first->suiv!=NULL)
     {
         Cellule * c = new Cellule(x);
-        c->suiv= new Cellule();
         c->suiv = first->suiv;
         first->suiv = c;
-        delete c;
+        
     } 
     else
     {
-        first = new Cellule(x);
-        first->suiv= new Cellule();
-        last = first->suiv;
+        
+        first->suiv= new Cellule(x);
+        first->suiv->suiv = new Cellule();
+        last = first->suiv->suiv;
 
     }
 }
 
 void Liste::afficher()
 {
-    Cellule * cur = new Cellule();
-    cur = first;
-    while(cur!=last)
+    if (first->suiv!=NULL)
     {
-        cout << cur->donnee << "--->";
-        cur = cur->suiv;
+        Cellule * cur = new Cellule();
+        cur = first->suiv;
+        cout << "first--->";
+        while(cur->suiv!=last)
+        {
+            cout << cur->donnee << "--->";
+            cur = cur->suiv;
+        }
+        cout << "NULL" << endl;
     }
-    cout << "NULL" << endl;
 }
 
+int Liste::back()
+{
+    int res = 0;
+    if (first->suiv != NULL)
+    {
+        Cellule * cur = new Cellule();
+        cur = first->suiv;
+        while (cur->suiv!=last)
+        {
+            cur = cur->suiv;
+        }
+        res =  cur->donnee;
+        delete cur;
+    }
+    
+    return res;
+}
 
+int Liste::front()
+{
+    int res = 0;
+    if (first->suiv != NULL)
+        res= first->suiv->donnee;
+    return res;
+}
+
+void Liste::pop_front()
+{
+    if (first->suiv != NULL)
+    {
+        
+        first->suiv= first->suiv->suiv;
+        
+    }
+}
+
+void Liste::pop_back()
+{
+    if (first->suiv!=NULL)
+    {
+        Cellule * cur;
+    }
+}

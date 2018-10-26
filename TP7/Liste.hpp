@@ -38,8 +38,12 @@ class Liste{
     bool empty();
     void afficher();
     // Liste & operator=();
-    void insert(int);
-    void insertTete(int);
+    void push_front(int);
+    void push_back(int);
+    int back();
+    int front();
+    void pop_front();
+    void pop_back();
     // void remove(int);
     // Iterator begin();
     // Iterator end();

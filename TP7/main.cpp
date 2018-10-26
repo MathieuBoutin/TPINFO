@@ -6,18 +6,26 @@ using namespace std;
 int main()
 {
     Liste L;
-    // L.insertTete(4);
-    L.insert(3);
-    // L.insert(6);
-    // L.insertTete(1);
+    
+    // L.push_front(4);
+    L.push_back(3);
+    cout << L.first->suiv->suiv << endl << L.last->suiv << endl;
+    L.push_back(6);
+    
+    // L.push_front(1);
+    //L.afficher();
     // if (L.empty())
     // {
     //     cout << "la liste est vide" << " " << L.empty() << endl;
     // }
     // else
     // {
-        cout << L.first->suiv->donnee << endl ;
+        // cout << L.first->suiv->donnee << endl ;
     // }
     // L.afficher();
+    // cout << L.front() << endl << L.back() << endl;
+    // L.pop_front();
+    // L.afficher();
+   
     return 0;
 }
